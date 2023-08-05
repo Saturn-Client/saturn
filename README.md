@@ -6,7 +6,7 @@
 <p align="center">A Minecraft utility client for anarchy servers.</p>
 
 <div align="center">
-    <img src="https://img.shields.io/github/last-commit/Saturn-Client/saturn " alt="GitHub last commit"/>
+    <img src="https://img.shields.io/github/last-commit/Saturn-Client/saturn" alt="GitHub last commit"/>
     <img src="https://img.shields.io/github/commit-activity/w/Saturn-Client/saturn" alt="GitHub commit activity"/>
     <img src="https://img.shields.io/github/languages/code-size/Saturn-Client/saturn" alt="GitHub code size in bytes"/>
 </div>
