@@ -76,21 +76,17 @@ public class SaturnGui extends Screen {
         ImGui.createContext();
         ImGuiIO io = ImGui.getIO();
 
-        // Load the font
         ImFontAtlas fontAtlas = io.getFonts();
         ImFont font;
 
-        // Extract the font file from the jar to a temporary file
         try {
             Path tempFile = Files.createTempFile("font", ".ttf");
-            try (InputStream is = getClass().getClassLoader().getResourceAsStream("SourceCodePro-Regular.ttf")) {
+            try (InputStream is = getClass().getClassLoader().getResourceAsStream("Minecraftia-Regular.ttf")) {
                 Files.copy(is, tempFile, StandardCopyOption.REPLACE_EXISTING);
             }
 
-            // Load the font from the temporary file
             font = fontAtlas.addFontFromFileTTF(tempFile.toString(), 16);
 
-            // Delete the temporary file when the JVM exits
             tempFile.toFile().deleteOnExit();
         } catch (IOException e) {
             throw new RuntimeException("Failed to load font", e);
@@ -170,9 +166,6 @@ public class SaturnGui extends Screen {
             style.setColor(ImGuiCol.Button, buttonColorInt);
             style.setColor(ImGuiCol.ButtonActive, buttonColorInt2);
             style.setColor(ImGuiCol.ButtonHovered, buttonColorInt2);
-
-
-
 
 
             ImGui.setWindowSize(400 * guiWidth.get(), 500 * guiHeight.get());
