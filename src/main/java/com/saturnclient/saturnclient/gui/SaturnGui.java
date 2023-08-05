@@ -34,10 +34,26 @@ public class SaturnGui extends Screen {
     public static final ImFloat guiWidth = new ImFloat(1.0f);
     public static final ImFloat fontSize = new ImFloat(1.0f);
 
-    public static final float[] fontColor = new float[]{1.0f, 1.0f, 1.0f, 1.0f}; // default to white with full opacity
+    public static final float[] fontColor = new float[]{1.0f, 1.0f, 1.0f, 1.0f};
+    public static final float[] bgColor = new float[]{0.0f, 0.0f, 0.0f, 0.66f};
+    public static final float[] frameColor = new float[]{0.2f, 0.2f, 0.2f, 0.8f};
+    public static final float[] titleColor = new float[]{0.0f, 0.0f, 0.0f, 1.0f};
 
+    public static final float[] sliderColor = new float[]{1.0f, 1.0f, 1.0f, 1.0f};
+
+    public static final float[] checkboxColor = new float[]{1.0f, 1.0f, 1.0f, 1.0f};
+
+    public static final float[] buttonColor = new float[]{1.0f, 1.0f, 1.0f, 0.7f};
     public int toARGB(float[] color) {
         int a = 255; // default to full opacity
+        int r = (int) (color[0] * 255) & 0xFF;
+        int g = (int) (color[1] * 255) & 0xFF;
+        int b = (int) (color[2] * 255) & 0xFF;
+        return a << 24 | b << 16 | g << 8 | r;
+    }
+
+    public int toARGB2(float[] color) {
+        int a = (int) (color[3] * 255) & 0xFF; // default to full opacity
         int r = (int) (color[0] * 255) & 0xFF;
         int g = (int) (color[1] * 255) & 0xFF;
         int b = (int) (color[2] * 255) & 0xFF;
@@ -102,11 +118,6 @@ public class SaturnGui extends Screen {
         io.addConfigFlags(ImGuiConfigFlags.NavEnableKeyboard);
 
         ImGui.getIO().setConfigWindowsMoveFromTitleBarOnly(true);
-        ImGui.getStyle().setColor(ImGuiCol.FrameBgActive, 50, 50, 50, 200);
-        ImGui.getStyle().setColor(ImGuiCol.TitleBgActive, 0, 0, 0, 255);
-        ImGui.getStyle().setColor(ImGuiCol.FrameBg, 50, 50, 50, 200);
-        ImGui.getStyle().setColor(ImGuiCol.WindowBg, 0, 0, 0, 170);
-
         if (ImGui.begin(Saturn.MOD_NAME + " " + Saturn.MOD_VERSION + " | Info tab", ImGuiWindowFlags.NoResize)) {
             ImGui.setWindowSize(400, 500);
             ImGui.text("Welcome to Saturn!");
@@ -115,15 +126,53 @@ public class SaturnGui extends Screen {
             ImGui.text("Minecraft " + SharedConstants.getGameVersion().getName());
             ImGui.text("Cmd prefix: " + Saturn.getInstance().getCommandManager().prefix);
 
-            ImGui.sliderFloat("Gui Height", guiHeight.getData(), 0.5f, 3.0f);
-            ImGui.sliderFloat("Gui Width", guiWidth.getData(), 0.5f, 2.0f);
-            ImGui.sliderFloat("Font Size", fontSize.getData(), 0.5f, 2.0f);
-            ImGui.checkbox("Custom Font", CustomFont);
-            ImGui.colorEdit3("Font Color", fontColor);
+            ImGui.separator();
+            ImGui.text("Sizes:");
+            ImGui.sliderFloat("Height", guiHeight.getData(), 0.5f, 3.0f);
+            ImGui.sliderFloat("Width", guiWidth.getData(), 0.5f, 2.0f);
+            ImGui.sliderFloat("Font", fontSize.getData(), 0.5f, 2.0f);
+            ImGui.separator();
+            ImGui.text("Colors:");
+            ImGui.colorEdit3("Font", fontColor);
+            ImGui.colorEdit4("BG", bgColor);
+            ImGui.colorEdit4("Frame", frameColor);
+            ImGui.colorEdit4("Title", titleColor);
+            ImGui.colorEdit4("Slider", sliderColor);
+            ImGui.colorEdit4("Checkbox", checkboxColor);
+            ImGui.colorEdit4("Button", buttonColor);
 
             ImGuiStyle style = ImGui.getStyle();
             int fontColorInt = toARGB(fontColor);
             style.setColor(ImGuiCol.Text, fontColorInt);
+
+            int bgColorInt = toARGB2(bgColor);
+            style.setColor(ImGuiCol.WindowBg, bgColorInt);
+
+            int checkboxColorInt = toARGB2(checkboxColor);
+            style.setColor(ImGuiCol.CheckMark, checkboxColorInt);
+
+            int frameColorInt = toARGB2(frameColor);
+            style.setColor(ImGuiCol.FrameBg, frameColorInt);
+            style.setColor(ImGuiCol.FrameBgActive, frameColorInt);
+            style.setColor(ImGuiCol.FrameBgHovered, frameColorInt);
+
+            int titleColorInt = toARGB2(titleColor);
+            style.setColor(ImGuiCol.TitleBgActive, titleColorInt);
+            style.setColor(ImGuiCol.TitleBg, titleColorInt);
+            style.setColor(ImGuiCol.TitleBgCollapsed, titleColorInt);
+
+            int sliderColorInt = toARGB2(sliderColor);
+            style.setColor(ImGuiCol.SliderGrab, sliderColorInt);
+            style.setColor(ImGuiCol.SliderGrabActive, sliderColorInt);
+
+            int buttonColorInt = toARGB2(buttonColor);
+            int buttonColorInt2 = toARGB2(buttonColor);
+            style.setColor(ImGuiCol.Button, buttonColorInt);
+            style.setColor(ImGuiCol.ButtonActive, buttonColorInt2);
+            style.setColor(ImGuiCol.ButtonHovered, buttonColorInt2);
+
+
+
 
 
             ImGui.setWindowSize(400 * guiWidth.get(), 500 * guiHeight.get());
