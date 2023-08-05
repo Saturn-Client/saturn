@@ -1,9 +1,4 @@
-/*
- * Copyright (c) 2023. Vili and contributors.
- * This source code is subject to the terms of the GNU General Public
- * License, version 3. If a copy of the GPL was not distributed with this
- *  file, You can obtain one at: https://www.gnu.org/licenses/gpl-3.0.txt
- */
+
 
 package com.saturnclient.saturnclient;
 
@@ -18,9 +13,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.minecraft.client.MinecraftClient;
 
-/**
- * Main class for haiku.
- */
+
 public class Saturn implements ModInitializer {
     public static final String MOD_NAME = "Saturn";
     public static final String MOD_VERSION = "0.1-dev";
@@ -43,9 +36,7 @@ public class Saturn implements ModInitializer {
         return INSTANCE;
     }
 
-    /**
-     * Called when haiku is initialized.
-     */
+
     @Override
     public void onInitialize() {
         SaturnLogger.logger.info(MOD_NAME + " v" + MOD_VERSION + " (phase 1) has initialized!");

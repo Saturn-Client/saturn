@@ -1,9 +1,4 @@
-/*
- * Copyright (c) 2023. Vili and contributors.
- * This source code is subject to the terms of the GNU General Public
- * License, version 3. If a copy of the GPL was not distributed with this
- *  file, You can obtain one at: https://www.gnu.org/licenses/gpl-3.0.txt
- */
+
 
 package com.saturnclient.saturnclient.gui;
 
@@ -94,7 +89,7 @@ public class SaturnOneGui extends Screen {
         ImGui.text("Minecraft " + SharedConstants.getGameVersion().getName());
         ImGui.text("Cmd prefix: " + Saturn.getInstance().getCommandManager().prefix);
         ImGui.separator();
-        ImGui.text("vili.dev");
+        ImGui.text("saturnclient.com");
 
         // Categories
         for (Module.Category category : Module.Category.values()) {
