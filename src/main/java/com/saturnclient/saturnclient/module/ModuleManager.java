@@ -5,7 +5,6 @@ package com.saturnclient.saturnclient.module;
 import com.saturnclient.saturnclient.Saturn;
 import com.saturnclient.saturnclient.event.events.KeyEvent;
 import com.saturnclient.saturnclient.eventbus.SaturnSubscribe;
-import com.saturnclient.saturnclient.module.modules.misc.DiscordRPC;
 import com.saturnclient.saturnclient.module.modules.movement.Fly;
 import com.saturnclient.saturnclient.module.modules.movement.Sprint;
 import com.saturnclient.saturnclient.module.modules.player.Dummy;
@@ -33,8 +32,8 @@ public class ModuleManager {
         modules.add(new OneGui());
         modules.add(new Hud());
         modules.add(new Sprint());
-        modules.add(new DiscordRPC());
     }
+
 
     /**
      * Gets the modules.

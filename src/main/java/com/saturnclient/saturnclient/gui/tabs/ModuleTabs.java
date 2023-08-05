@@ -36,6 +36,7 @@ public class ModuleTabs {
         ImGui.getIO().addConfigFlags(ImGuiConfigFlags.NavEnableKeyboard);
 
         for (Module module : Saturn.getInstance().getModuleManager().modules) {
+
             showSettingsMap.put(module, showSettingsMap.getOrDefault(module, false));
             enabledMap.put(module, new ImBoolean(module.isEnabled()));
 
@@ -53,6 +54,7 @@ public class ModuleTabs {
                     default -> SaturnLogger.logger.warn("Unknown setting type: " + setting.getClass().getSimpleName());
                 }
             }
+
         }
 
         for (Module.Category category : Module.Category.values()) {
@@ -153,6 +155,18 @@ public class ModuleTabs {
                             }
                         }
                     }
+                    case "StringSetting" -> {
+                        ImString imString = (ImString) settingsMap.get(setting); // Cast to ImString
+                        String oldString = imString.get();
+                        if (ImGui.inputText(setting.name, imString)) {
+                            String newString = imString.get();
+                            if (!oldString.equals(newString)) {
+                                ((StringSetting) setting).setString(newString);
+                            }
+                        }
+                    }
+
+
                     default -> SaturnLogger.logger.warn("Unknown setting type: " + setting.getClass().getSimpleName());
                 }
             }
