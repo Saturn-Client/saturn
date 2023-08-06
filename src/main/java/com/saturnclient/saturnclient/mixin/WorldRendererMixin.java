@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;

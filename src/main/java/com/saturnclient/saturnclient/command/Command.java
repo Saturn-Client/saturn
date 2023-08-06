@@ -9,9 +9,9 @@ import java.util.List;
 public abstract class Command {
     public static MinecraftClient mc = MinecraftClient.getInstance();
     public String name, description, syntax;
-    public List<String> aliases;
+    public List < String > aliases;
 
-    public Command(String name, String description, String syntax, String... aliases) {
+    public Command(String name, String description, String syntax, String...aliases) {
         this.name = name;
         this.description = description;
         this.syntax = syntax;
@@ -24,8 +24,7 @@ public abstract class Command {
      * @param args    arguments passed
      * @param command command name
      */
-    public void onCommand(String[] args, String command) {
-    }
+    public void onCommand(String[] args, String command) {}
 
     /**
      * Gets the command name
@@ -78,7 +77,7 @@ public abstract class Command {
     /**
      * Gets the command aliases
      */
-    public List<String> getAliases() {
+    public List < String > getAliases() {
         return aliases;
     }
 
@@ -87,7 +86,7 @@ public abstract class Command {
      *
      * @param aliases aliases to set
      */
-    public void setAliases(List<String> aliases) {
+    public void setAliases(List < String > aliases) {
         this.aliases = aliases;
     }
 

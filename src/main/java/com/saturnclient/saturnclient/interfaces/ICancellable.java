@@ -10,7 +10,9 @@ public interface ICancellable {
     /**
      * Cancels this event.
      */
-    default void cancel() { setCancelled(true); }
+    default void cancel() {
+        setCancelled(true);
+    }
 
     /**
      * @return True if this event is cancelled.

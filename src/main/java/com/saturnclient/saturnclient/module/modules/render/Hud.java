@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.module.modules.render;
 
 import com.saturnclient.saturnclient.Saturn;
@@ -38,7 +36,7 @@ public class Hud extends Module {
         int y = 5;
 
         if (arraylist.isEnabled()) {
-            for (Module module : Saturn.getInstance().getModuleManager().getEnabledModules()) {
+            for (Module module: Saturn.getInstance().getModuleManager().getEnabledModules()) {
                 event.getContext().drawTextWithShadow(mc.textRenderer, ">" + module.name, 2, y += 10, 0xFFFFFF);
             }
         }

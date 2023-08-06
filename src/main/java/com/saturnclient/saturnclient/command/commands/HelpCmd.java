@@ -18,7 +18,7 @@ public class HelpCmd extends Command {
             SaturnLogger.info("Commands: " + Saturn.getInstance().getCommandManager().commands.stream()
                     .map(Command::getName).collect(Collectors.joining(", ")));
         } else {
-            for (Command cmd : Saturn.getInstance().getCommandManager().commands) {
+            for (Command cmd: Saturn.getInstance().getCommandManager().commands) {
                 if (cmd.getName().equalsIgnoreCase(args[0])) {
                     SaturnLogger.info(cmd.getSyntax());
                     return;

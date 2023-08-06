@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.mixin;
 
 import com.saturnclient.saturnclient.event.events.PacketEvent;
@@ -17,14 +15,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ClientConnectionMixin {
 
     @Inject(method = "channelRead0*", at = @At("HEAD"), cancellable = true)
-    private void packetReceive(ChannelHandlerContext channelHandlerContext, Packet<?> packet, CallbackInfo ci) {
+    private void packetReceive(ChannelHandlerContext channelHandlerContext, Packet < ? > packet, CallbackInfo ci) {
         PacketEvent event = new PacketEvent(packet, PacketEvent.Type.RECEIVE);
         Saturn.getInstance().getEventBus().post(event);
         if (event.isCancelled()) ci.cancel();
     }
 
     @Inject(method = "send(Lnet/minecraft/network/packet/Packet;)V", at = @At("HEAD"), cancellable = true)
-    private void packetSend(Packet<?> packet, CallbackInfo ci) {
+    private void packetSend(Packet < ? > packet, CallbackInfo ci) {
         /* This is for the client commands */
         if (packet instanceof ChatMessageC2SPacket pack) {
             if (pack.chatMessage().startsWith(Saturn.getInstance().getCommandManager().prefix)) {

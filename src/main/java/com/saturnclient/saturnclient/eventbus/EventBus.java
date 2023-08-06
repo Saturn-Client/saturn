@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.eventbus;
 
 import java.lang.invoke.*;
@@ -13,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
 public class EventBus implements IEventBus {
-    private final Map<Class<? extends SaturnEvent>, CopyOnWriteArrayList<Listener>> listeners = new ConcurrentHashMap<>();
+    private final Map < Class < ? extends SaturnEvent > , CopyOnWriteArrayList < Listener >> listeners = new ConcurrentHashMap < > ();
 
     /**
      * Registers a object.
@@ -27,13 +25,13 @@ public class EventBus implements IEventBus {
                 .filter(method -> method.getParameterCount() == 1)
                 .forEach(method -> {
 
-                    @SuppressWarnings("unchecked") Class<? extends SaturnEvent> event =
-                            (Class<? extends SaturnEvent>) method.getParameterTypes()[0];
+                    @SuppressWarnings("unchecked") Class < ? extends SaturnEvent > event =
+                            (Class < ? extends SaturnEvent > ) method.getParameterTypes()[0];
 
-                    Consumer<SaturnEvent> lambda = null;
+                    Consumer < SaturnEvent > lambda = null;
                     if (method.getDeclaredAnnotation(SaturnSubscribe.class).lambda())
                         lambda = getLambda(registerClass, method, event);
-                    if (!listeners.containsKey(event)) listeners.put(event, new CopyOnWriteArrayList<>());
+                    if (!listeners.containsKey(event)) listeners.put(event, new CopyOnWriteArrayList < > ());
 
                     listeners.get(event).add(new Listener(registerClass, method, lambda));
                 });
@@ -56,19 +54,20 @@ public class EventBus implements IEventBus {
      */
     @Override
     public void post(SaturnEvent event) {
-        List<Listener> listenersList = listeners.get(event.getClass());
-        if (listenersList != null) for (Listener listener : listenersList) {
-            if (event.isCancelled()) return;
-            if (listener.getLambda() != null)
-                listener.getLambda().accept(event);
-            else {
-                try {
-                    listener.getMethod().invoke(listener.getListenerClass(), event);
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    e.printStackTrace();
+        List < Listener > listenersList = listeners.get(event.getClass());
+        if (listenersList != null)
+            for (Listener listener: listenersList) {
+                if (event.isCancelled()) return;
+                if (listener.getLambda() != null)
+                    listener.getLambda().accept(event);
+                else {
+                    try {
+                        listener.getMethod().invoke(listener.getListenerClass(), event);
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        }
     }
 
     /**
@@ -79,8 +78,8 @@ public class EventBus implements IEventBus {
      * @param event  event
      * @return event lambda
      */
-    protected Consumer<SaturnEvent> getLambda(Object object, Method method, Class<? extends SaturnEvent> event) {
-        Consumer<SaturnEvent> eventLambda = null;
+    protected Consumer < SaturnEvent > getLambda(Object object, Method method, Class < ? extends SaturnEvent > event) {
+        Consumer < SaturnEvent > eventLambda = null;
         try {
             MethodHandles.Lookup lookup = MethodHandles.lookup();
             MethodType subscription = MethodType.methodType(void.class, event);
@@ -94,7 +93,7 @@ public class EventBus implements IEventBus {
                     subscription);
 
             MethodHandle factory = site.getTarget();
-            eventLambda = (Consumer<SaturnEvent>) factory.bindTo(object).invokeExact();
+            eventLambda = (Consumer < SaturnEvent > ) factory.bindTo(object).invokeExact();
         } catch (Throwable e) {
             e.printStackTrace();
         }

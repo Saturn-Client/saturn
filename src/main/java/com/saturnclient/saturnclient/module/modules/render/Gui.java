@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.module.modules.render;
 
 import com.saturnclient.saturnclient.gui.SaturnGui;

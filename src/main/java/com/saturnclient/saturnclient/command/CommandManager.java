@@ -10,11 +10,11 @@ import java.util.List;
 
 public class CommandManager {
     public String prefix = "-";
-    public List<Command> commands;
+    public List < Command > commands;
     boolean commandFound;
 
     public CommandManager() {
-        commands = new ArrayList<>();
+        commands = new ArrayList < > ();
 
         /* Add commands here */
         commands.add(new HelpCmd());
@@ -35,7 +35,7 @@ public class CommandManager {
         if (message.split(" ").length > 0) {
             commandFound = false;
             String commandName = message.split(" ")[0];
-            for (Command c : commands) {
+            for (Command c: commands) {
                 if (c.aliases.contains(commandName) || c.name.equalsIgnoreCase(commandName)) {
                     c.onCommand(Arrays.copyOfRange(message.split(" "), 1, message.split(" ").length), message);
                     commandFound = true;
@@ -52,7 +52,7 @@ public class CommandManager {
      * @param name name of command
      */
     public Command getCommand(String name) {
-        for (Command command : commands) {
+        for (Command command: commands) {
             if (command.name.equalsIgnoreCase(name)) return command;
         }
         return null;

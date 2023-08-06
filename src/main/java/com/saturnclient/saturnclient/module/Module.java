@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.module;
 
 import com.saturnclient.saturnclient.Saturn;
@@ -20,7 +18,7 @@ public abstract class Module {
     public KeybindSetting keyCode = new KeybindSetting(0);
     public Category category;
     public boolean enabled;
-    public List<Setting> settings = new ArrayList<>();
+    public List < Setting > settings = new ArrayList < > ();
 
     public Module(String name, String description, int key, Category category) {
         super();
@@ -33,14 +31,13 @@ public abstract class Module {
         addSettings(keyCode);
     }
 
-
     /**
      * Adds settings to the module.
      * Must be called in the constructor.
      *
      * @param settings settings to add
      */
-    public void addSettings(Setting... settings) {
+    public void addSettings(Setting...settings) {
         this.settings.addAll(Arrays.asList(settings));
         this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
     }
@@ -52,7 +49,7 @@ public abstract class Module {
         Saturn.getInstance().getEventBus().register(this);
         Saturn.getInstance().getConfigManager().save();
 
-        SaturnLogger.info(Formatting.GRAY + "Toggled "+ Formatting.WHITE + this.getName() + Formatting.GREEN + " on");
+        SaturnLogger.info(Formatting.GRAY + "Toggled " + Formatting.WHITE + this.getName() + Formatting.GREEN + " on");
     }
 
     /**
@@ -62,7 +59,7 @@ public abstract class Module {
         Saturn.getInstance().getEventBus().unregister(this);
         Saturn.getInstance().getConfigManager().save();
 
-        SaturnLogger.info(Formatting.GRAY + "Toggled "+ Formatting.WHITE + this.getName() + Formatting.RED+ " off");
+        SaturnLogger.info(Formatting.GRAY + "Toggled " + Formatting.WHITE + this.getName() + Formatting.RED + " off");
     }
 
     /**

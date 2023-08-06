@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.module.modules.player;
 
 import com.saturnclient.saturnclient.module.Module;

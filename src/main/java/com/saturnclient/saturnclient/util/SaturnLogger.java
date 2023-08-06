@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.util;
 
 import net.minecraft.client.MinecraftClient;

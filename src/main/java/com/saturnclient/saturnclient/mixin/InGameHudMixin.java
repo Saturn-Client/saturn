@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.mixin;
 
 import com.saturnclient.saturnclient.event.events.RenderInGameHudEvent;

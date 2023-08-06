@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.eventbus;
 
 import java.lang.annotation.ElementType;

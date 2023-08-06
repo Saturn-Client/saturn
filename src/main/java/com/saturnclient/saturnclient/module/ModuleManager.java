@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.module;
 
 import com.saturnclient.saturnclient.Saturn;
@@ -8,10 +6,7 @@ import com.saturnclient.saturnclient.eventbus.SaturnSubscribe;
 import com.saturnclient.saturnclient.module.modules.movement.Fly;
 import com.saturnclient.saturnclient.module.modules.movement.Sprint;
 import com.saturnclient.saturnclient.module.modules.player.Dummy;
-import com.saturnclient.saturnclient.module.modules.render.Fullbright;
-import com.saturnclient.saturnclient.module.modules.render.Gui;
-import com.saturnclient.saturnclient.module.modules.render.Hud;
-import com.saturnclient.saturnclient.module.modules.render.OneGui;
+import com.saturnclient.saturnclient.module.modules.render.*;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
@@ -19,35 +14,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModuleManager {
-    public final ArrayList<Module> modules;
+    public final ArrayList < Module > modules;
 
     public ModuleManager() {
-        modules = new ArrayList<>();
+        modules = new ArrayList < > ();
 
         /* Add modules here */
         modules.add(new Dummy());
         modules.add(new Fullbright());
         modules.add(new Fly());
         modules.add(new Gui());
-        modules.add(new OneGui());
         modules.add(new Hud());
         modules.add(new Sprint());
-    }
+        modules.add(new Xray());
 
+    }
 
     /**
      * Gets the modules.
      */
-    public ArrayList<Module> getModules() {
+    public ArrayList < Module > getModules() {
         return modules;
     }
 
     /**
      * Gets enabled modules.
      */
-    public ArrayList<Module> getEnabledModules() {
-        ArrayList<Module> enabledModules = new ArrayList<>();
-        for (Module module : modules) {
+    public ArrayList < Module > getEnabledModules() {
+        ArrayList < Module > enabledModules = new ArrayList < > ();
+        for (Module module: modules) {
             if (module.isEnabled())
                 enabledModules.add(module);
         }
@@ -78,9 +73,9 @@ public class ModuleManager {
      *
      * @param category category of the module
      */
-    public List<Module> getModulesByCategory(Module.Category category) {
-        List<Module> cats = new ArrayList<>();
-        for (Module m : modules) {
+    public List < Module > getModulesByCategory(Module.Category category) {
+        List < Module > cats = new ArrayList < > ();
+        for (Module m: modules) {
             if (m.getCategory() == category) cats.add(m);
         }
         return cats;

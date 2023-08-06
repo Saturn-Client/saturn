@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.util;
 
 import com.saturnclient.saturnclient.event.events.PacketEvent;
@@ -23,7 +21,6 @@ public class TPSUtil {
             }
         }
     }
-
 
     /**
      * Returns the ticks per-second.

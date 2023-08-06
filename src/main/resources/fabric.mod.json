@@ -3,7 +3,7 @@
   "id": "saturnclient",
   "version": "0.1-dev",
   "name": "Saturn",
-  "description": "Open source base client for the latest Fabric version.",
+  "description": "A Minecraft utility client for anarchy servers.",
   "authors": [
     "AzE"
   ],

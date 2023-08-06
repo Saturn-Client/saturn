@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.event.events;
 
 import com.saturnclient.saturnclient.event.Event;

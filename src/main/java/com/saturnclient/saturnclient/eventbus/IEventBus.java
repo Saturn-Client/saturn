@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.eventbus;
 
 public interface IEventBus {

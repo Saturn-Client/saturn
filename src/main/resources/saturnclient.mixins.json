@@ -12,7 +12,9 @@
     "KeyboardMixin",
     "MinecraftClientMixin",
     "WorldRendererMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "BlockMixin",
+    "SimpleOptionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

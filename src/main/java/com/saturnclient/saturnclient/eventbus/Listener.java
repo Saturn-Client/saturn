@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.eventbus;
 
 import java.lang.reflect.Method;
@@ -8,9 +6,9 @@ import java.util.function.Consumer;
 public final class Listener {
     private final Object listenerClass;
     private final Method method;
-    private final Consumer<SaturnEvent> lambda;
+    private final Consumer < SaturnEvent > lambda;
 
-    public Listener(final Object listenerClass, final Method method, final Consumer<SaturnEvent> lambda) {
+    public Listener(final Object listenerClass, final Method method, final Consumer < SaturnEvent > lambda) {
         this.listenerClass = listenerClass;
         this.method = method;
         this.lambda = lambda;
@@ -34,7 +32,7 @@ public final class Listener {
      *
      * @return lambda
      */
-    public Consumer<SaturnEvent> getLambda() {
+    public Consumer < SaturnEvent > getLambda() {
         return lambda;
     }
 

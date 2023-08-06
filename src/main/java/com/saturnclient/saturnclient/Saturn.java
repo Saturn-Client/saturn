@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient;
 
 import com.saturnclient.saturnclient.util.SaturnLogger;
@@ -12,7 +10,6 @@ import com.saturnclient.saturnclient.setting.SettingManager;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.minecraft.client.MinecraftClient;
-
 
 public class Saturn implements ModInitializer {
     public static final String MOD_NAME = "Saturn";
@@ -35,7 +32,6 @@ public class Saturn implements ModInitializer {
     public static Saturn getInstance() {
         return INSTANCE;
     }
-
 
     @Override
     public void onInitialize() {

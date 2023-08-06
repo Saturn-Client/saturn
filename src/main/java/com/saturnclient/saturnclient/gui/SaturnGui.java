@@ -1,10 +1,7 @@
-
-
 package com.saturnclient.saturnclient.gui;
 
 import com.saturnclient.saturnclient.Saturn;
 import com.saturnclient.saturnclient.gui.tabs.ModuleTabs;
-import com.saturnclient.saturnclient.setting.settings.BooleanSetting;
 import imgui.*;
 import imgui.flag.ImGuiCol;
 import imgui.flag.ImGuiConfigFlags;
@@ -18,17 +15,12 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
-/**
- * Saturn's click gui.
- * Uses ImGui, because its based.
- */
 public class SaturnGui extends Screen {
     public static final ImFloat guiHeight = new ImFloat(1.0f);
     public static final ImFloat guiWidth = new ImFloat(1.0f);
@@ -53,16 +45,12 @@ public class SaturnGui extends Screen {
     }
 
     public int toARGB2(float[] color) {
-        int a = (int) (color[3] * 255) & 0xFF; // default to full opacity
+        int a = (int) (color[3] * 255) & 0xFF;
         int r = (int) (color[0] * 255) & 0xFF;
         int g = (int) (color[1] * 255) & 0xFF;
         int b = (int) (color[2] * 255) & 0xFF;
         return a << 24 | b << 16 | g << 8 | r;
     }
-
-
-
-
 
 
     public static final ImBoolean CustomFont = new ImBoolean(true);
@@ -121,7 +109,6 @@ public class SaturnGui extends Screen {
             ImGui.text("Saturn v" + Saturn.MOD_VERSION);
             ImGui.text("Minecraft " + SharedConstants.getGameVersion().getName());
             ImGui.text("Cmd prefix: " + Saturn.getInstance().getCommandManager().prefix);
-
             ImGui.separator();
             ImGui.text("Sizes:");
             ImGui.sliderFloat("Height", guiHeight.getData(), 0.5f, 3.0f);

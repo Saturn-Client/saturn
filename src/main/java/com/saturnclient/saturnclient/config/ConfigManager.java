@@ -59,10 +59,10 @@ public class ConfigManager {
             SaturnLogger.logger.info("Saving config...");
             Properties properties = new Properties();
 
-            for (Module module : Saturn.getInstance().getModuleManager().getModules()) {
+            for (Module module: Saturn.getInstance().getModuleManager().getModules()) {
                 properties.setProperty(module.getName() + ".enabled", String.valueOf(module.isEnabled()));
 
-                for (Setting setting : module.settings) {
+                for (Setting setting: module.settings) {
                     switch (setting.getClass().getSimpleName()) {
                         case "BooleanSetting" -> {
                             BooleanSetting booleanSetting = (BooleanSetting) setting;
@@ -103,11 +103,11 @@ public class ConfigManager {
             Properties properties = new Properties();
             properties.loadFromXML(new FileInputStream(file));
 
-            for (Module module : Saturn.getInstance().getModuleManager().getModules()) {
+            for (Module module: Saturn.getInstance().getModuleManager().getModules()) {
                 if (Boolean.parseBoolean(properties.getProperty(module.getName() + ".enabled")) != module.isEnabled())
                     module.setEnabled(Boolean.parseBoolean(properties.getProperty(module.getName() + ".enabled"))); // Set the enabled state.
 
-                for (Setting setting : module.settings) {
+                for (Setting setting: module.settings) {
                     switch (setting.getClass().getSimpleName()) {
                         case "BooleanSetting" -> {
                             BooleanSetting booleanSetting = (BooleanSetting) setting;

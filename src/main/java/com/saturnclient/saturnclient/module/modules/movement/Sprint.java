@@ -1,5 +1,3 @@
-
-
 package com.saturnclient.saturnclient.module.modules.movement;
 
 import com.saturnclient.saturnclient.event.events.TickEvent;
